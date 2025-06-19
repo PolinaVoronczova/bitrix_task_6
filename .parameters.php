@@ -16,7 +16,7 @@ $arTypesEx = CIBlockParameters::GetIBlockTypes();
 
 $arIBlocks = [];
 
-$db_iblock = CIBlock::GetList(["SORT"=>"ASC"], $iblockFilter);
+$db_iblock = CIBlock::GetList(["SORT"=>"ASC"], []);
 while($arRes = $db_iblock->Fetch())
 {
 	$arIBlocks[$arRes["ID"]] = "[" . $arRes["ID"] . "] " . $arRes["NAME"];
@@ -48,9 +48,7 @@ $arComponentParameters = [
 			"NAME" => GetMessage("T_IBLOCK_FILTER"),
 			"TYPE" => "STRING",
 			"DEFAULT" => "",
-		],
-		"FIELD_CODE" => CIBlockParameters::GetFieldCode(GetMessage("IBLOCK_FIELD"), "DATA_SOURCE"),
+		]
 	],
 ];
 
-CIBlockParameters::Add404Settings($arComponentParameters, $arCurrentValues);
